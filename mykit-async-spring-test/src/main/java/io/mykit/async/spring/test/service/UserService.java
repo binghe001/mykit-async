@@ -39,4 +39,10 @@ public class UserService {
 
         return user;
     }
+
+    @Async
+    public String getName(){
+        logger.info("正在添加用户姓名{}", "张三");
+        return "张三";
+    }
 }

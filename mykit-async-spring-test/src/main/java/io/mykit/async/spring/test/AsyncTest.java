@@ -58,6 +58,12 @@ public class AsyncTest {
         logger.info("执行结果  任务1：{}  任务2：{}", user1.getName(), user2.getName());
     }
 
+    @Test
+    public void testGetName(){
+        String name = userService.getName();
+        logger.info(name);
+    }
+
 
     /**
      * 测试编程式异步
