@@ -45,7 +45,7 @@ mykit-async 架构下主要以Spring为基础实现的异步编程框架，重�
 ```
 @EnableAsync
 ```
-注意：此注解为：io.mykit.async.spring.annotation.EnableAsync  
+注意：此注解类为：io.mykit.async.spring.annotation.EnableAsync  
   
 在Spring的配置文件中加入如下配置：
 ```
