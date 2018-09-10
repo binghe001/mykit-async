@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
        default-lazy-init="false">
-    <context:component-scan base-package="io.mykit.async.spring"/>
+    <context:component-scan base-package="io.mykit.async"/>
     <context:annotation-config/>
     <context:property-placeholder location="classpath*:properties/async-default.properties, classpath*: properties/async.properties" ignore-unresolvable="true"/>
 

@@ -15,6 +15,7 @@
  */
 package io.mykit.async.spring.test.service;
 
+import io.mykit.async.spring.annotation.Async;
 import io.mykit.async.spring.test.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,4 +37,13 @@ public class TeacherService {
 
         return user;
     }
+
+    @Async
+    public User addAsyncTeacher(User user) {
+
+        logger.info("正在添加教师{}", user.getName());
+
+        return user;
+    }
+
 }

@@ -21,6 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * @author liuyazhuang
  * @date 2018/9/9 22:32
@@ -32,6 +34,9 @@ public class UserService {
 
     private final static Logger logger = LoggerFactory.getLogger(TeacherService.class);
 
+    @Resource
+    private TeacherService teacherService;
+
     @Async
     public User addUser(User user) {
 
@@ -41,8 +46,34 @@ public class UserService {
     }
 
     @Async
+    public User addTeacherUser(User user) {
+
+        logger.info("正在添加用户{}", user.getName());
+
+        return teacherService.addAsyncTeacher(user);
+    }
+
+    @Async
     public String getName(){
         logger.info("正在添加用户姓名{}", "张三");
         return "张三";
     }
+
+    @Async
+    public User getUser(){
+        logger.info("正在获取用户...");
+        return new User(18, "李四");
+    }
+
+    public User getSyncUser(){
+        logger.info("同步方法...");
+        User user = getUser();
+        return user;
+    }
+
+    @Async
+    public void printUser(){
+        logger.info("打印用户信息");
+    }
+
 }

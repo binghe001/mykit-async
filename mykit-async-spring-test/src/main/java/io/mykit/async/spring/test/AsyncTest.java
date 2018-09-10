@@ -15,6 +15,7 @@
  */
 package io.mykit.async.spring.test;
 
+import io.mykit.async.spring.annotation.Async;
 import io.mykit.async.spring.core.AsyncCallable;
 import io.mykit.async.spring.core.AsyncFutureCallback;
 import io.mykit.async.spring.template.AsyncTemplate;
@@ -58,12 +59,79 @@ public class AsyncTest {
         logger.info("执行结果  任务1：{}  任务2：{}", user1.getName(), user2.getName());
     }
 
+    /**
+     * 测试获取名字
+     */
     @Test
     public void testGetName(){
         String name = userService.getName();
         logger.info(name);
     }
 
+    /**
+     * 测试获取不同对象
+     */
+    @Test
+    public void testGetUser(){
+        User user = userService.getUser();
+        logger.info("name===>>>" + user.getName() + ", age===>>>" + user.getAge());
+    }
+
+    /**
+     * 测试本类另一个标注为@Async的方法
+     */
+    @Test
+    public void testCreateUser(){
+        User user = createUser();
+        logger.info("name===>>>" + user.getName() + ", age===>>>" + user.getAge());
+    }
+
+    /**
+     * 测试调用同步方法，同步方法内调用另一个异步方法
+     */
+    @Test
+    public void testGetSyncUser(){
+        User user = userService.getSyncUser();
+        logger.info("name===>>>" + user.getName() + ", age===>>>" + user.getAge());
+    }
+
+    /**
+     * 测试异步调用返回为void的方法
+     */
+    @Test
+    public void testPrintUser(){
+        logger.info("执行打印方法...");
+        userService.printUser();
+    }
+
+    /**
+     * 测试一个类中标注了@Async的方法调用另一个类中标注了@Async的方法
+     */
+    @Test
+    public void testAddTeacherUser(){
+        logger.info("开始调用...");
+        userService.addTeacherUser(new User(20, "王五"));
+        logger.info("结束调用...");
+
+    }
+
+    /**
+     * 测试同时调用两个标注了@Async的方法
+     */
+    @Test
+    public void testJoinUser(){
+        logger.info("开始调用...");
+        User user = userService.getUser();
+        logger.info("调用异步获取用户信息的方法返回数据为===>>>name:{}, age:{}", user.getName(), user.getAge());
+        userService.printUser();
+        logger.info("结束调用");
+    }
+
+    @Async
+    private User createUser(){
+        logger.info("正在创建用户...");
+        return new User(20, "张三");
+    }
 
     /**
      * 测试编程式异步
