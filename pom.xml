@@ -25,6 +25,7 @@
         <lombok.version>1.16.10</lombok.version>
         <fastjson.version>1.2.47</fastjson.version>
         <jackson.version>2.9.6</jackson.version>
+        <jackson.databind.version>2.9.8</jackson.databind.version>
         <junit.version>4.12</junit.version>
         <mybatis-spring.version>1.2.2</mybatis-spring.version>
         <mybatis.version>3.2.7</mybatis.version>
@@ -32,19 +33,6 @@
         <mysql.version>5.1.35</mysql.version>
 
     </properties>
-
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Nexus Release Repository</name>
-            <url>http://125.64.43.186:8081/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Nexus Snapshot Repository</name>
-            <url>http://125.64.43.186:8081/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <dependencies>
         <!-- log -->
@@ -75,7 +63,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
+            <version>${jackson.databind.version}</version>
         </dependency>
 
         <dependency>
